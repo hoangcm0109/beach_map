@@ -1,0 +1,88 @@
+<!-- <div class="home">
+    <button mat-raised-button color="primary">Primary</button>
+</div> -->
+
+<div class="">
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Beach Map</span>
+    <span class="example-spacer"></span>
+    <div class="wrapper-menu">
+      <button mat-button>Home</button>
+      <button mat-button>Contact</button>
+      <button mat-button>Blog</button>
+      <button mat-button>Menu</button>
+      <button mat-button>Map</button>
+    </div>
+    <span class="example-spacer"></span>
+    <div class="">
+      <button
+        mat-icon-button
+        class="example-icon favorite-icon"
+        aria-label="Example icon-button with heart icon"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with share icon"
+      >
+        <mat-icon>share</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div class="slider-wrap">
+    <div class="card">
+      <p-carousel
+        [value]="products"
+        [numVisible]="3"
+        [numScroll]="3"
+        [circular]="false"
+        [responsiveOptions]="responsiveOptions"
+      >
+        <ng-template let-product pTemplate="item">
+          <div
+            class="border-1 surface-border border-round m-2 text-center py-5 px-3"
+          >
+            <div class="mb-3 flex items-center justify-center">
+              <img
+                src="https://primefaces.org/cdn/primeng/images/demo/product/{{
+                  product.image
+                }}"
+                [alt]="product.name"
+                class="shadow-2"
+              />
+            </div>
+            <div>
+              <h4 class="mb-1">{{ product.name }}</h4>
+              <h6 class="mt-0 mb-3">{{ "$" + product.price }}</h6>
+              <p-tag
+                [value]="product.inventoryStatus"
+                [severity]="getSeverity(product.inventoryStatus)"
+              ></p-tag>
+              <div class="car-buttons mt-5">
+                <button mat-raised-button color="primary">View beach</button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+
+  <div class="">
+    <map-view></map-view>
+  </div>
+
+  <div class="slider-wrap">
+    <app-table></app-table>
+  </div>
+</div>
