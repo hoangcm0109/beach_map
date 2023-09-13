@@ -52,13 +52,11 @@
           <div
             class="border-1 surface-border border-round m-2 text-center py-5 px-3"
           >
-            <div class="mb-3 flex items-center justify-center">
+            <div class="mb-3 flex items-center justify-center h-[200px]">
               <img
-                src="https://primefaces.org/cdn/primeng/images/demo/product/{{
-                  product.image
-                }}"
+                src="{{ product.image }}"
                 [alt]="product.name"
-                class="shadow-2"
+                class="shadow-2 w-full h-full"
               />
             </div>
             <div>
@@ -78,11 +76,31 @@
     </div>
   </div>
 
-  <div class="">
-    <map-view></map-view>
+  <div class="mb-4">
+    <map-view [options]="options"></map-view>
   </div>
 
-  <div class="slider-wrap">
-    <app-table></app-table>
+  <div class="p-4">
+    <div class="select-box">
+      <mat-form-field>
+        <mat-label>Area</mat-label>
+        <mat-select
+          [value]="valueSelect"
+          (selectionChange)="selectFilterArea($event)"
+        >
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="slider-wrap pb-4">
+      <app-table [dataSource]="dataSource" [options]="options"></app-table>
+    </div>
+  </div>
+
+  <div class="pb-4">
+    <form-contact></form-contact>
   </div>
 </div>

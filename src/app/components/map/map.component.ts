@@ -8,6 +8,7 @@ import {
   Optional,
 } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
+import { OptionLocation } from 'src/app/pages/home/types/home.type';
 import { MapService } from 'src/app/service/map.service';
 @Component({
   selector: 'map-view',
@@ -29,8 +30,8 @@ export class MapComponent implements OnInit {
     this.mapService.getMap();
   }
 
-  options = {
-    center: { lat: 212, lng: 1 },
+  @Input() options: OptionLocation = {
+    center: { lat: 21.0282, lng: 105.8538 },
     zoom: 30,
   };
 
@@ -53,6 +54,9 @@ export class MapComponent implements OnInit {
     // } else {
     //   console.log('Geolocation is not supported by this browser.');
     // }
+
+    console.log(this.options);
+    
   }
 
   setChangeOptions() {

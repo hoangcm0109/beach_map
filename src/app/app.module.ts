@@ -5,20 +5,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './router/app-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-
+import {
+  MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER,
+  MatAutocompleteModule,
+} from '@angular/material/autocomplete';
+import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER } from '@angular/material/select';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatAutocompleteModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER,
+    MAT_SELECT_SCROLL_STRATEGY_PROVIDER,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

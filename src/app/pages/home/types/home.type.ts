@@ -10,3 +10,8 @@ export interface Product {
   image?: string;
   rating?: number;
 }
+
+export interface OptionLocation {
+  center: { lat: number; lng: number };
+  zoom: number;
+}
