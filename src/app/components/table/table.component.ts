@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { OptionLocation } from 'src/app/pages/home/types/home.type';
 
 export interface PeriodicElement {
@@ -26,37 +28,33 @@ export class TableComponent {
   @Input() dataSource: any;
   @Input() options: OptionLocation | any;
 
-  ngOnInit(): void {
-    console.log(this.dataSource);
+  @Output() handleEmitOptions = new EventEmitter<any>();
+
+  constructor() {
+    (window as any).pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
 
   getRecord(row: any) {
-    console.log(row);
-    this.options = {
-      ...this.options,
-      center: row.location,
-    };
+    // console.log(row);
+    this.handleEmitOptions.emit(row);
   }
 
   downloadDescription(value: any) {
-    const blob = new Blob([value.description], {
-      type: 'application/pdf',
-    });
+    const documentDefinition = {
+      content: [
+        { text: `${value.name} - Beach Map`, style: 'header' },
+        value.description,
+      ],
+      styles: {
+        header: {
+          fontSize: 22,
+          bold: true,
+        },
+      },
+    };
 
-    const blobURL = window.URL.createObjectURL(blob);
-    const tempLink = document.createElement('a');
+    const pdfDoc = pdfMake.createPdf(documentDefinition);
 
-    tempLink.style.display = 'none';
-    tempLink.href = blobURL;
-    tempLink.setAttribute('download', 'description.pdf');
-    document.body.appendChild(tempLink);
-    tempLink.click();
-    document.body.removeChild(tempLink);
-    setTimeout(() => {
-      // For Firefox it is necessary to delay revoking the ObjectURL
-      window.URL.revokeObjectURL(blobURL);
-    }, 100);
-
-    // this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
+    pdfDoc.download('description.pdf');
   }
 }

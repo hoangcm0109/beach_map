@@ -5,14 +5,16 @@
         .product-item-content {
             border: 1px solid var(--surface-d);
             border-radius: 3px;
-            margin: .3rem;
+            margin: 0.3rem;
             text-align: center;
             padding: 2rem 0;
         }
-    
+
         .product-image {
             width: 50%;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+            box-shadow:
+                0 3px 6px rgba(0, 0, 0, 0.16),
+                0 3px 6px rgba(0, 0, 0, 0.23);
         }
     }
 }
@@ -32,6 +34,82 @@
     justify-content: space-between;
 }
 
-.mdc-text-field--filled { 
+.mdc-text-field--filled {
     background-color: white;
+}
+
+.navbar-custom {
+    background-color: rgba(0, 0, 0, 0.274);
+    border: 0;
+    border-radius: 0;
+    z-index: 1000;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    transition:
+        background,
+        padding 0.4s ease-in-out 0s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+
+    li a {
+        text-decoration: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: 400;
+        color: white;
+    }
+}
+
+.home-section {
+    height: 800px;
+    background-image: url("https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+    position: relative;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    z-index: 0;
+    background-size: cover;
+}
+
+.titan-caption {
+    position: relative;
+    display: table;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.caption-content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.titan-title-size-4 {
+    letter-spacing: 24px;
+    font-weight: 600;
+    color: white;
+    font-size: 48px;
+    text-transform: uppercase;
+}
+
+.titan-title-size-1 {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.btn.btn-border-w {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    color: #fff;
 }

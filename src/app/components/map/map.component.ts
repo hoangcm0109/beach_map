@@ -36,27 +36,23 @@ export class MapComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    // if (navigator.geolocation) {
-    //   const _this = this
-    //   navigator.geolocation.getCurrentPosition(function (position) {
-    //     const latitude = position.coords.latitude;
-    //     const longitude = position.coords.longitude;
-    //     _this.options = {
-    //       ..._this.options,
-    //       center: {
-    //         lat: latitude,
-    //         lng: longitude,
-    //       },
-    //     };
-    //     console.log(_this.options);
-    //     _this.cd.detectChanges();
-    //   });
-    // } else {
-    //   console.log('Geolocation is not supported by this browser.');
-    // }
-
-    console.log(this.options);
-    
+    if (navigator.geolocation) {
+      const _this = this;
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        _this.options = {
+          ..._this.options,
+          center: {
+            lat: latitude,
+            lng: longitude,
+          },
+        };
+        _this.cd.detectChanges();
+      });
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
   }
 
   setChangeOptions() {

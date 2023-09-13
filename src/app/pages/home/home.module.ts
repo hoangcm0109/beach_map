@@ -15,6 +15,8 @@ import { TagModule } from 'primeng/tag';
 import { MapModule } from 'src/app/components/map/map.module';
 import { TableModule } from 'src/app/components/table/table.module';
 import { FormContactModule } from 'src/app/components/form-contact/form-contact.module';
+import { FooterModule } from 'src/app/components/footer/footer.module';
+import { CollectionsModule } from 'src/app/components/collections/collections.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -33,6 +35,8 @@ import { FormContactModule } from 'src/app/components/form-contact/form-contact.
     MatSelectModule,
     MatInputModule,
     FormsModule,
+    FooterModule,
+    CollectionsModule,
   ],
 })
 export class HomeModule {}

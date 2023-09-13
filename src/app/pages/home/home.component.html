@@ -3,80 +3,52 @@
 </div> -->
 
 <div class="">
-  <mat-toolbar color="primary">
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
+  <div class="">
+    <nav
+      class="navbar navbar-custom navbar-fixed-top one-page navbar-transparent"
+      role="navigation"
     >
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>Beach Map</span>
-    <span class="example-spacer"></span>
-    <div class="wrapper-menu">
-      <button mat-button>Home</button>
-      <button mat-button>Contact</button>
-      <button mat-button>Blog</button>
-      <button mat-button>Menu</button>
-      <button mat-button>Map</button>
-    </div>
-    <span class="example-spacer"></span>
-    <div class="">
-      <button
-        mat-icon-button
-        class="example-icon favorite-icon"
-        aria-label="Example icon-button with heart icon"
-      >
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with share icon"
-      >
-        <mat-icon>share</mat-icon>
-      </button>
-    </div>
-  </mat-toolbar>
-
-  <div class="slider-wrap">
-    <div class="card">
-      <p-carousel
-        [value]="products"
-        [numVisible]="3"
-        [numScroll]="3"
-        [circular]="false"
-        [responsiveOptions]="responsiveOptions"
-      >
-        <ng-template let-product pTemplate="item">
-          <div
-            class="border-1 surface-border border-round m-2 text-center py-5 px-3"
-          >
-            <div class="mb-3 flex items-center justify-center h-[200px]">
-              <img
-                src="{{ product.image }}"
-                [alt]="product.name"
-                class="shadow-2 w-full h-full"
-              />
-            </div>
-            <div>
-              <h4 class="mb-1">{{ product.name }}</h4>
-              <h6 class="mt-0 mb-3">{{ "$" + product.price }}</h6>
-              <p-tag
-                [value]="product.inventoryStatus"
-                [severity]="getSeverity(product.inventoryStatus)"
-              ></p-tag>
-              <div class="car-buttons mt-5">
-                <button mat-raised-button color="primary">View beach</button>
-              </div>
-            </div>
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand text-white" href="index.html">BeachMap</a>
+        </div>
+        <div class="menu-main" id="custom-collapse">
+          <ul class="navbar">
+            <li><a href="#totop">Home</a></li>
+            <li><a class="section-scroll" href="#services">Services</a></li>
+            <li><a class="section-scroll" href="#works">Works</a></li>
+            <li><a class="section-scroll" href="#alt-features">Features</a></li>
+            <li><a class="section-scroll" href="#team">Team</a></li>
+            <li><a class="section-scroll" href="#pricing">Prices</a></li>
+            <li><a class="section-scroll" href="#news">News</a></li>
+            <li><a class="section-scroll" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="home-section home-full-height bg-dark" id="home">
+      <div class="titan-caption">
+        <div class="caption-content">
+          <div class="font-alt mb-30 titan-title-size-1">
+            Hello &amp; welcome
           </div>
-        </ng-template>
-      </p-carousel>
-    </div>
+          <div class="font-alt mb-4 titan-title-size-4">Beach Map</div>
+          <a class="section-scroll btn btn-border-w btn-round" href="#"
+            >Learn More</a
+          >
+        </div>
+      </div>
+    </section>
   </div>
 
-  <div class="mb-4">
+  <div class="">
+    <app-collections
+      [collections]="collections"
+      (handleEmitOptions)="handleEmitOptions($event)"
+    ></app-collections>
+  </div>
+
+  <div class="mb-4" #mapView>
     <map-view [options]="options"></map-view>
   </div>
 
@@ -96,11 +68,18 @@
     </div>
 
     <div class="slider-wrap pb-4">
-      <app-table [dataSource]="dataSource" [options]="options"></app-table>
+      <app-table
+        [dataSource]="dataSource"
+        [options]="options"
+        (handleEmitOptions)="handleEmitOptions($event)"
+      ></app-table>
     </div>
   </div>
 
   <div class="pb-4">
     <form-contact></form-contact>
+  </div>
+  <div class="">
+    <app-footer></app-footer>
   </div>
 </div>
